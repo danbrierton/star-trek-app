@@ -3,19 +3,9 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { Router, Route } from 'react-router';
-import Home from './pages/Home.js';
-import { createBrowserHistory } from "history";
-
-const history = createBrowserHistory();
 
 ReactDOM.render(
-      <Router history={history}>
-        <Route strict path = "/">
-          <Home />
-        </Route>
-      </Router>
-  ,
+  <App />,
   document.getElementById('root')
 );
 
