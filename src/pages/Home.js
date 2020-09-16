@@ -9,6 +9,20 @@ class Home extends Component {
         ship: ["blank"],
         url: "http://stapi.co/api/v1/rest/spacecraft/search"
     };
+
+    componentDidMount(){
+        fetch('http://stapi.co/api/v1/rest/spacecraft/search')
+        .then(response => response.json())
+        .then(data => console.log(data.spacecrafts))
+
+        //Got state to set but for some reason it doesn't like 'data', troubleshoot more
+        // .then(data => 
+        //     {this.setState(
+        //         {APIresponse: data.spacecrafts}
+        //         )
+        //     }
+        // ).then(console.log(this.state.APIresponse))
+    }
     
     render(){
         return(
