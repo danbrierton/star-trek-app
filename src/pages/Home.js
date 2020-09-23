@@ -6,22 +6,30 @@ import ListShips from '../components/listShips.js'
 class Home extends Component {
     
     state = {
-        ship: ["blank"],
-        url: "http://stapi.co/api/v1/rest/spacecraft/search"
+        ships: [{}],
+        url: "http://stapi.co/api/v1/rest/spacecraft/search",
+        apiResponse: []
     };
 
     componentDidMount(){
-        fetch('http://stapi.co/api/v1/rest/spacecraft/search')
-        .then(response => response.json())
-        .then(data => console.log(data.spacecrafts))
+        fetch(this.state.url)
 
-        //Got state to set but for some reason it doesn't like 'data', troubleshoot more
-        // .then(data => 
-        //     {this.setState(
-        //         {APIresponse: data.spacecrafts}
-        //         )
+        //Option 1 - Unfinished - Save the API Response, then extract ships later
+        // .then(
+        //     (response)=>{
+        //         this.setState({apiResponse: response});
         //     }
-        // ).then(console.log(this.state.APIresponse))
+        // )
+
+        //Option 2 - Extract ships right from the API response and save it to state
+        .then((result)=>(result.json()))
+        .then((apiJson)=>this.setState({ships: apiJson.spacecrafts}))
+        // .then(()=>{console.log(this.state.ships)})
+
+
+
+        // .then(()=>{console.log(this.state.apiResponse)})
+        // .then(()=>console.log(this.state.ships))
     }
     
     render(){
