@@ -2,7 +2,7 @@ import React from 'react';
 
 function ListShips (props) {
     return (
-        <p>{props.state.ship}</p>
+        <p>{props.state.ships[0].name}</p>
     );
 };
 
