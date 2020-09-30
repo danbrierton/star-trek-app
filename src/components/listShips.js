@@ -1,9 +1,12 @@
 import React from 'react';
+import './listShips.css';
+
+// To Do: Clicking a button sorts or shows only ships with a certain value on a column
 
 function ListShips (props) {
-    console.log(props.state.ships)
+    // console.log(props.state.ships)
 
-    function test (ships){
+    function shipTableRows (ships){
         return ships.map(
             (element)=>{
                 return (
@@ -21,22 +24,18 @@ function ListShips (props) {
 
 
     return (
-        <div>
-
-
+        <div id="listShips">
             <table>
-                <tr>
+                <tr >
                     <th>Name</th>
                     <th>Status Date</th>
                     <th>Status</th>
-                    <th>Operator</th>
-                    <th>Owner</th>
+                    {/* <th>Operator</th>
+                    <th>Owner</th> */}
                 </tr>
-                { test(props.state.ships) }
+                { shipTableRows(props.state.ships) }
             </table>
         </div>
-
-
     );
 };
 

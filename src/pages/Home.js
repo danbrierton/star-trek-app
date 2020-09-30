@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Navbar from '../components/navbar.js';
 import ListShips from '../components/listShips.js'
+import './Home.css';
 
 
 class Home extends Component {

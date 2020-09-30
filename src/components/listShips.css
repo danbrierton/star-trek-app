@@ -1,0 +1,5 @@
+/* See home.css for generica table styles */
+#listShips{
+        display: flex;
+        justify-content: center;
+}
