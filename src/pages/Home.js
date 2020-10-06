@@ -9,8 +9,17 @@ class Home extends Component {
     state = {
         ships: [{}],
         url: "http://stapi.co/api/v1/rest/spacecraft/search",
-        apiResponse: []
+        apiResponse: [],
+        showTable: null
     };
+
+// NEED TO FIX:  changeStateOfTable broke after we sent it to Navbar component
+
+    changeStateOfTable(string){
+        // console.log(`old state: ${this.state.showTable}`)
+        this.setState({showTable: string})
+        // console.log(`new state: ${this.state.showTable}`)
+    }
 
     componentDidMount(){
         fetch(this.state.url)
@@ -27,16 +36,15 @@ class Home extends Component {
         .then((apiJson)=>this.setState({ships: apiJson.spacecrafts}))
         // .then(()=>{console.log(this.state.ships)})
 
-
-
         // .then(()=>{console.log(this.state.apiResponse)})
         // .then(()=>console.log(this.state.ships))
     }
     
+
     render(){
         return(
             <React.Fragment>
-                <Navbar /> 
+                <Navbar tableFunction={this.changeStateOfTable}/> 
                 <p>Home Test</p>
                 <ListShips state={this.state} />
             </React.Fragment>
