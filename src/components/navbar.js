@@ -6,7 +6,7 @@ function Navbar(props) {
         props.tableFunction("ships")
     }
     function listOutCaptains() {
-        console.log("CAPTAINS!");
+        props.tableFunction("captains")
     }
     return (
         <nav>

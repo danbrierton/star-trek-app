@@ -10,15 +10,18 @@ class Home extends Component {
         ships: [{}],
         url: "http://stapi.co/api/v1/rest/spacecraft/search",
         apiResponse: [],
-        showTable: null
+        showTable: "null"
     };
 
-// NEED TO FIX:  changeStateOfTable broke after we sent it to Navbar component
+    // TO DO LIST:  Build out captains table from API call data
 
-    changeStateOfTable(string){
-        // console.log(`old state: ${this.state.showTable}`)
+    changeStateOfTable = (string) => {
         this.setState({showTable: string})
-        // console.log(`new state: ${this.state.showTable}`)
+    }
+
+    whatToPrint = () => {
+        if (this.state.showTable == "ships") {return <ListShips state={this.state} />}
+        else if (this.state.showTable == "captains") {return <p>captains table TBD</p>}
     }
 
     componentDidMount(){
@@ -45,8 +48,7 @@ class Home extends Component {
         return(
             <React.Fragment>
                 <Navbar tableFunction={this.changeStateOfTable}/> 
-                <p>Home Test</p>
-                <ListShips state={this.state} />
+                {this.whatToPrint()}
             </React.Fragment>
         )
     }
