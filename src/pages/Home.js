@@ -23,7 +23,7 @@ class Home extends Component {
 
     whatToPrint = () => {
         if (this.state.showTable == "ships") {return <ListShips state={this.state} />}
-        else if (this.state.showTable == "captains") {return <ListCaptains state={this.state}/>}
+        else if (this.state.showTable == "captains") {return <ListCaptains captains={this.state.captains}/>}
     }
 
     componentDidMount(){
@@ -63,7 +63,6 @@ class Home extends Component {
             <React.Fragment>
                 <Navbar tableFunction={this.changeStateOfTable}/> 
                 {this.whatToPrint()}
-                {console.log(this.state.captains)}
             </React.Fragment>
         )
     }
