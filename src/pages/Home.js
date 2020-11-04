@@ -17,13 +17,15 @@ class Home extends Component {
 
     // TO DO LIST:  Build out captains table from API call data
 
+    //change state function
     changeStateOfTable = (string) => {
         this.setState({showTable: string})
     }
 
     whatToPrint = () => {
-        if (this.state.showTable == "ships") {return <ListShips state={this.state} />}
-        else if (this.state.showTable == "captains") {return <ListCaptains captains={this.state.captains}/>}
+        //makes this.state accessible (as a prop) to the ListShips component
+        if (this.state.showTable === "ships") {return <ListShips state={this.state} />}
+        else if (this.state.showTable === "captains") {return <ListCaptains captains={this.state.captains}/>}
     }
 
     componentDidMount(){
@@ -61,6 +63,7 @@ class Home extends Component {
     render(){
         return(
             <React.Fragment>
+                {/* makes changeStateOfTable accessible to Navbar, because we pass it as a key */}
                 <Navbar tableFunction={this.changeStateOfTable}/> 
                 {this.whatToPrint()}
             </React.Fragment>
