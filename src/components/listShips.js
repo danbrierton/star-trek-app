@@ -8,9 +8,9 @@ function ListShips (props) {
 
     function shipTableRows (ships){
         return ships.map(
-            (element)=>{
+            (element, index)=>{
                 return (
-                    <tr>
+                    <tr key={index}>
                         <td>{element.name}</td>
                         <td>{element.dateStatus}</td>
                         <td>{element.status}</td>
@@ -27,14 +27,18 @@ function ListShips (props) {
     return (
         <div id="listShips">
             <table>
-                <tr >
-                    <th>Name</th>
-                    <th>Status Date</th>
-                    <th>Status</th>
-                    {/* <th>Operator</th>
-                    <th>Owner</th> */}
-                </tr>
-                { shipTableRows(props.state.ships) }
+                <thead>
+                    <tr >
+                        <th>Name</th>
+                        <th>Status Date</th>
+                        <th>Status</th>
+                        {/* <th>Operator</th>
+                        <th>Owner</th> */}
+                    </tr>
+                </thead>
+                <tbody>
+                    { shipTableRows(props.state.ships) }
+                </tbody>
             </table>
         </div>
     );
