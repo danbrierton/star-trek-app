@@ -1,18 +1,21 @@
 import React from 'react';
 
 function ListCaptains (props) {
-    console.log(props.captains)
-    //assign function to a variable
-    const printCaptainRows = ()=> {
-        return (
-            //TO DO: Map or ForEach for the elements we want from the props.captains array
-            <tr>
-                <td>"Hello there"</td>
-                <td>Super Dead</td>
-                <td>A while ago</td>
-            </tr>
+    const printCaptainRows = (people)=> {
+        return people.map(
+            (element, index)=> {
+                return (
+                    <tr key={index}>
+                        <td>{element.name}</td>
+                        {/* Deceased stored as boolean not string so need to add logic to print correctly */}
+                        <td>{element.deceased}</td>
+                        <td>{element.yearOfDeath}</td>
+                    </tr>
+                )
+            }     
         )
     }
+
 
 
     return (
@@ -27,7 +30,7 @@ function ListCaptains (props) {
                     </tr>
                 </thead>
                 <tbody>
-                    {printCaptainRows()}
+                    {printCaptainRows(props.captains)}
                 </tbody>
 
             </table>
