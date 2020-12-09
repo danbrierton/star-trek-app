@@ -1,21 +1,40 @@
 import React from 'react';
 
+
+
 function ListCaptains (props) {
+    console.log(props.captains);
     const printCaptainRows = (people)=> {
         return people.map(
             (element, index)=> {
                 return (
                     <tr key={index}>
                         <td>{element.name}</td>
-                        {/* Deceased stored as boolean not string so need to add logic to print correctly */}
-                        <td>{element.deceased}</td>
+=                        <td>{isDeceasedLogic(element.deceased)}</td>
                         <td>{element.yearOfDeath}</td>
+                        {deathInconsistencycheck(element.deceased, element.yearOfDeath)}
                     </tr>
+                    
                 )
             }     
         )
     }
 
+    //a bit of logit to interpret the deceased table field
+    const isDeceasedLogic = (thisRow)=> {
+        if (thisRow === null) 
+            {return "no";}
+        else { return thisRow.toString()}
+    };
+
+    //NEXT TIME: Take the logic from this and use it to change the css of those rows.
+
+    // if deceased is null and Year of Death is a value that is not null, then
+    const deathInconsistencycheck = (isDeadbool, deathYear)=> {
+        if (isDeadbool == null && deathYear !== null) {
+            console.log("hey, this is messed up!")
+        }
+    }
 
 
     return (
