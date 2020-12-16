@@ -9,3 +9,11 @@ th {
         background-color: #999999;
         color: white;
 }
+tr:hover {
+        background-color: rosybrown;
+}
+
+.alive { background-color: green;
+}
+.deceased { background-color: red;
+}

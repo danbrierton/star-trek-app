@@ -10,7 +10,7 @@ function ListCaptains (props) {
                 return (
                     <tr key={index}>
                         <td>{element.name}</td>
-=                        <td>{isDeceasedLogic(element.deceased)}</td>
+                        {formatDeceased(element.deceased)}
                         <td>{element.yearOfDeath}</td>
                         {deathInconsistencycheck(element.deceased, element.yearOfDeath)}
                     </tr>
@@ -28,6 +28,14 @@ function ListCaptains (props) {
     };
 
     //NEXT TIME: Take the logic from this and use it to change the css of those rows.
+
+
+    const formatDeceased = (rowData)=> {
+        if (rowData === true)
+            {return <td class="deceased">{isDeceasedLogic(rowData)}</td>;
+        }
+        else {return <td class="alive">{isDeceasedLogic(rowData)}</td>;}
+    }
 
     // if deceased is null and Year of Death is a value that is not null, then
     const deathInconsistencycheck = (isDeadbool, deathYear)=> {
